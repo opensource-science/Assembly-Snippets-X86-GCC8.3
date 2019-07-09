@@ -1,0 +1,20 @@
+For(int, int, int):
+        push    rbp
+        mov     rbp, rsp
+        mov     DWORD PTR [rbp-20], edi
+        mov     DWORD PTR [rbp-24], esi
+        mov     DWORD PTR [rbp-28], edx
+        mov     eax, DWORD PTR [rbp-20]
+        mov     DWORD PTR [rbp-4], eax
+.L5:
+        mov     eax, DWORD PTR [rbp-4]
+        cmp     eax, DWORD PTR [rbp-24]
+        jg      .L6
+        nop
+        mov     eax, DWORD PTR [rbp-28]
+        add     DWORD PTR [rbp-4], eax
+        jmp     .L5
+.L6:
+        nop
+        pop     rbp
+        ret
